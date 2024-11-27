@@ -1,0 +1,114 @@
+/* Definições gerais */
+body {
+    background-color: #000;
+    /* Fundo preto para o site */
+    color: #fff;
+    /* Texto branco */
+}
+
+/* Logo */
+.logo {
+    max-width: 150px;
+    /* Tamanho fixo para a logo */
+}
+
+/* Navegação */
+.navbar {
+    background-color: black;
+    /* Barra de navegação preta */
+}
+
+.navbar .navbar-nav .nav-link {
+    color: white;
+    /* Texto branco para links */
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #fff;
+    /* Cor do link ao passar o mouse */
+    background-color: red;
+    /* Fundo vermelho quando hover */
+    border-radius: 5px;
+}
+
+/* Cards de produtos */
+.card {
+    background-color: #000;
+    /* Fundo preto para os cards */
+    color: #fff;
+    /* Texto branco nos cards */
+    border: 1px solid #444;
+    /* Borda sutil para os cards */
+    margin-bottom: 20px;
+}
+
+.card-title {
+    color: #f44336;
+    /* Título do card em vermelho */
+}
+
+.card-text {
+    color: #ddd;
+    /* Descrição do card em cinza claro */
+}
+
+/* Botões dos cards */
+.card .btn-primary {
+    background-color: red;
+    /* Cor do botão */
+    border: none;
+}
+
+.card .btn-primary:hover {
+    background-color: darkred;
+    /* Cor do botão ao passar o mouse */
+}
+
+/* Estilo de rodapé */
+footer {
+    background-color: black;
+    /* Fundo escuro para o rodapé */
+    color: #fff;
+    /* Texto branco */
+    padding: 20px;
+}
+
+footer a {
+    color: #f44336;
+    /* Links em vermelho no rodapé */
+}
+
+footer a:hover {
+    color: #ff6666;
+    /* Cor do link ao passar o mouse */
+}
+
+/* Estilo dos itens do carrinho */
+.list-group-item {
+    background-color: #333;
+    /* Fundo escuro para os itens do carrinho */
+    color: #fff;
+    /* Texto branco */
+}
+
+.list-group-item:hover {
+    background-color: #444;
+    /* Cor de fundo levemente mais clara ao passar o mouse */
+}
+
+/* Ajuste para imagens do carrossel */
+.carrossel-img {
+    height: 500px;
+    /* Altura padrão */
+    object-fit: cover;
+    /* Garante que as imagens sejam cortadas proporcionalmente para preencher o espaço */
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 15px;
+        /* Ajuste para telas menores */
+    }
+}

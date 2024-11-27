@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Carrinho - FitLife</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Barra de navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="home.html">
+            <img src="img/logo.png" alt="Logo da FitLife" class="logo" width="150">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="carrinho.html">Carrinho</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Conteúdo do carrinho -->
+    <main class="flex-grow-1 container mt-4">
+        <h2 class="text-white">Carrinho</h2>
+        <div id="lista-carrinho" class="mt-4 bg-dark text-white p-3 rounded">
+            <p>O carrinho está vazio.</p>
+        </div>
+        <button id="limpar-carrinho" class="btn btn-danger mt-3">Limpar Carrinho</button>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-center py-4 mt-auto">
+        <p class="text-white">&copy; 2024 FitLife. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const listaCarrinho = document.getElementById("lista-carrinho");
+            const btnLimpar = document.getElementById("limpar-carrinho");
+
+            function carregarCarrinho() {
+                const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+                listaCarrinho.innerHTML = carrinho.length
+                    ? carrinho.map((item, index) =>
+                        `<div class="item-carrinho d-flex justify-content-between align-items-center bg-secondary text-white p-2 rounded mb-2">
+                            <span>${item.nome} - R$ ${item.preco}</span>
+                            <button class="btn btn-sm btn-danger" data-index="${index}">Remover</button>
+                        </div>`
+                    ).join("")
+                    : "<p>O carrinho está vazio.</p>";
+            }
+
+            listaCarrinho.addEventListener("click", function (e) {
+                if (e.target.tagName === "BUTTON") {
+                    const index = e.target.getAttribute("data-index");
+                    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+                    carrinho.splice(index, 1);
+                    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+                    carregarCarrinho();
+                }
+            });
+
+            btnLimpar.addEventListener("click", function () {
+                localStorage.removeItem("carrinho");
+                carregarCarrinho();
+            });
+
+            carregarCarrinho();
+        });
+    </script>
+</body>
+
+</html>
